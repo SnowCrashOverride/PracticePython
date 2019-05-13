@@ -1,0 +1,101 @@
+Exercise 1 (and Solution)
+Create a program that asks the user to enter their name and their age. Print out a message addressed to them that tells them the year that they will turn 100 years old.
+
+Extras:
+
+Add on to the previous program by asking the user for another number and printing out that many copies of the previous message. (Hint: order of operations exists in Python)
+Print out that many copies of the previous message on separate lines. (Hint: the string "\n is the same as pressing the ENTER button)
+
+
+name = input("What's your name? ")
+age = int(input("How old are you? "))
+
+centenarian_year = 2019 - age + 100
+
+if age > 100:
+    print ("You already turned 100 in ", centenarian_year)
+
+elif age < 3:
+    print("You're just a baby! You don't need to worry about that!")
+
+else:
+
+    print (name, "will turn one hundred in", centenarian_year)
+
+    reprint = int(input("How many more times would you like to print that out? "))
+
+    for n in range(reprint):
+        print (name, "will turn one hundred in", centenarian_year)
+
+
+
+
+
+Exercise 2 (and Solution)
+Ask the user for a number. Depending on whether the number is even or odd, print out an appropriate message to the user. Hint: how does an even / odd number react differently when divided by 2?
+
+Extras:
+
+If the number is a multiple of 4, print out a different message.
+Ask the user for two numbers: one number to check (call it num) and one number to divide by (check). If check divides evenly into num, tell that to the user. If not, print a different appropriate message.
+
+
+number = int(input("Enter a number to see if it's odd or even: "))
+
+if number % 2 == 0 and number % 4 != 0:
+    print (number, "is an even number.")
+elif number % 2 == 0 and number % 4 == 0:
+    print(number, "is an even number which is divisible by 4.")
+else:
+    print (number, "is an odd number.")
+
+
+#Extra 2:
+
+
+num = int(input("Enter a number to divide: "))
+check = int(input("Enter a number to divide by: "))
+
+if num % check == 0:
+    print (check, "divides evenly into", num)
+else:
+    print (num, "is not divisible by", check)
+
+
+
+
+Exercise 3 (and Solution)
+Take a list, say for example this one:
+
+  a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+and write a program that prints out all the elements of the list that are less than 5.
+
+Extras:
+
+Instead of printing the elements one by one, make a new list that has all the elements less than 5 from this list in it and print out this new list.
+Write this in one line of Python.
+Ask the user for a number and return a list that contains only elements from the original list a that are smaller than that number given by the user.
+
+
+def lessthanten(lst):
+    new_list = []
+    for num in lst:
+        if num <5:
+            new_list.append(num)
+    print (new_list)
+
+#Extra 2:
+
+def lessthanten(lst):
+    print ([num for num in lst if num <5])
+
+#Extra 3:
+
+topnum = int(input("Enter a number "))
+
+def lessthanten(lst):
+    new_list = []
+    for num in lst:
+        if num <topnum:
+            new_list.append(num)
+    print (new_list)
