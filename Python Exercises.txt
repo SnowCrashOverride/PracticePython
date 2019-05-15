@@ -156,3 +156,219 @@ print (new_list)
 
 def twolist(a,b):
     print (set(a)&set(b))
+
+
+
+
+Exercise 6 (and Solution)
+Ask the user for a string and print out whether this string is a palindrome or not. (A palindrome is a string that reads the same forwards and backwards.)
+
+
+check_string = input("Input a string to see if it's a palindrome: ")
+
+if check_string == check_string[::-1]:
+    print (check_string, "is a palindrome.")
+else:
+    print (check_string, "is not a palindrome.")
+
+
+
+
+
+Exercise 7 (and Solution)
+Let’s say I give you a list saved in a variable: a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]. Write one line of Python that takes this list a and makes a new list that has only the even elements of this list in it.
+
+def listcomp(lst):
+    print ([0+num for num in lst if num % 2 ==0])
+
+
+
+Exercise 8 (and Solution)
+Make a two-player Rock-Paper-Scissors game. (Hint: Ask for player plays (using input), compare them, print out a message of congratulations to the winner, and ask if the players want to start a new game)
+
+
+p1 = int(input("Player 1: Enter 1 for rock, 2 for paper, 3 for scissors: "))
+p2 = int(input("Player 2: Enter 1 for rock, 2 for paper, 3 for scissors: "))
+
+if p1 == p2:
+    print ("Tied! Go again.")
+elif p1==1 and p2==2 or p1==2 and p2==3 or p1==3 and p2==1:
+    print ("Player 2 wins!")
+elif p1==1 and p2==3 or p1==2 and p2==1 or p1==3 and p2==2:
+    print ("Player 1 wins!")
+
+
+
+
+
+Exercise 9 (and Solution)
+Generate a random number between 1 and 9 (including 1 and 9). Ask the user to guess the number, then tell them whether they guessed too low, too high, or exactly right. (Hint: remember to use the user input lessons from the very first exercise)
+
+Extras:
+
+Keep the game going until the user types “exit”
+Keep track of how many guesses the user has taken, and when the game ends, print this out.
+
+
+
+import random
+
+user_num = int(input("Enter your number: "))
+rando_num = random.randint(1,10)
+
+if rando_num == user_num:
+    print ("You win!")
+elif rando_num > user_num:
+    print ("Too low!")
+else:
+    print ("Too high!")
+
+
+#Extra 1 and 2:
+
+
+import random
+
+rando_num = random.randint(1,10)
+user_input = 0
+count = 0
+
+while user_input != rando_num and user_input != "exit":
+    user_input = input("Enter a number to guess or type exit. ")
+
+    if user_input == "exit":
+        break
+    
+    user_input = int(user_input)
+    count += 1
+
+    
+    if rando_num == user_input:
+        print ("You win! It took", count, "tries!")
+    elif rando_num > user_input:
+        print ("Too low!")
+    else:
+        print ("Too high!")
+
+
+
+Exercise 10 (and Solution)
+This week’s exercise is going to be revisiting an old exercise (see Exercise 5), except require the solution in a different way.
+
+Take two lists, say for example these two:
+
+	a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+	b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+and write a program that returns a list that contains only the elements that are common between the lists (without duplicates). Make sure your program works on two lists of different sizes. Write this in one line of Python using at least one list comprehension. (Hint: Remember list comprehensions from Exercise 7).
+
+The original formulation of this exercise said to write the solution using one line of Python, but a few readers pointed out that this was impossible to do without using sets that I had not yet discussed on the blog, so you can either choose to use the original directive and read about the set command in Python 3.3, or try to implement this on your own and use at least one list comprehension in the solution.
+
+Extra:
+
+Randomly generate two lists to test this
+
+
+import random
+
+random_list_1 = random.sample(range(100), 25)
+random_list_2 = random.sample(range(100), 25)
+new_list = [num for num in random_list_1 if num in random_list_2]
+
+print (new_list)
+
+
+
+
+Exercise 11 (and Solution)
+Ask the user for a number and determine whether the number is prime or not. (For those who have forgotten, a prime number is a number that has no divisors.). You can (and should!) use your answer to Exercise 4 to help you. Take this opportunity to practice using functions, described below.
+
+
+def get_num(prompt):
+    return int(input(prompt))
+
+def is_prime(num):
+    if num == 1:
+        prime == False
+    elif num == 2:
+        prime == True
+    else:
+        prime = True
+        for check_num in range(2, int(num/2)+1):
+            if num % check_num == 0:
+                prime = False
+                break
+        return prime
+
+def print_prime(num):
+    prime = is_prime(num)
+    if prime:
+        descriptor = " "
+    else:
+        descriptor = "not "
+    print(num," is ", descriptor, "prime.", sep = "", end ="\n\n")
+
+while 1 == 1:
+    print_prime(get_num("Enter a number to see if it's prime. Use ctrl-c to exit."))
+
+
+
+
+
+Exercise 12 (and Solution)
+Write a program that takes a list of numbers (for example, a = [5, 10, 15, 20, 25]) and makes a new list of only the first and last elements of the given list. For practice, write this code inside a function.
+
+def cut_list(user_list):
+    return [user_list[0], user_list[len(user_list)-1]]
+
+
+
+
+
+Exercise 13 (and Solution)
+Write a program that asks the user how many Fibonnaci numbers to generate and then generates them. Take this opportunity to think about how you can use functions. Make sure to ask the user to enter the number of numbers in the sequence to generate.(Hint: The Fibonnaci seqence is a sequence of numbers where the next number in the sequence is the sum of the previous two numbers in the sequence. The sequence looks like this: 1, 1, 2, 3, 5, 8, 13, …)
+
+
+
+fib_times = int(input("How long of a sequence do you want? "))
+
+num1 = 0
+num2 = 1
+count = 0
+
+while count < fib_times:
+    print (num1, end=',')
+    num_sum = num1 + num2
+    num1 = num2
+    num2 = num_sum
+    count += 1
+
+
+
+
+Exercise 14 (and Solution)
+Write a program (function!) that takes a list and returns a new list that contains all the elements of the first list minus all the duplicates.
+
+Extras:
+
+Write two different functions to do this - one using a loop and constructing a list, and another using sets.
+Go back and do Exercise 5 using sets, and write the solution for that in a different function.
+
+user_list = input("Enter your list: ")
+
+def remove_duplicates(user_list):
+    new_list = []
+    for num in user_list:
+        if num not in new_list:
+            new_list.append(num)
+    print (new_list)
+            
+remove_duplicates(user_list)
+
+
+#Or:
+
+def remove_duplicates(user_list):
+    user_list = list(set(user_list))
+    user_list.sort()
+    print (user_list)
+
