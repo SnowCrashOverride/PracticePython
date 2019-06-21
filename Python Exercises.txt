@@ -549,3 +549,67 @@ if my_num in ordered_list:
 else:
     print (False)
 
+
+
+#in a function:
+
+def find_num(ordered_list, my_num):
+    if my_num in ordered_list:
+        return True
+    else:
+        return False
+
+if __name__=="__main__":
+    ordered_list = input("Enter a list")
+    my_num = input("Enter a number to find")
+    print (find_num(ordered_list, my_num))
+
+
+
+
+
+
+
+
+
+
+
+Exercise 22 (and Solution)
+Given a .txt file that has a list of a bunch of names, count how many of each name there are in the file, and print out the results to the screen. I have a .txt file for you, if you want to use it!
+
+Extra:
+
+Instead of using the .txt file from above (or instead of, if you want the challenge), take this .txt file, and count how many of each “category” of each image there are. This text file is actually a list of files corresponding to the SUN database scene recognition database, and lists the file directory hierarchy for the images. Once you take a look at the first line or two of the file, it will be clear which part represents the scene category. To do this, you’re going to have to remember a bit about string parsing in Python 3. I talked a little bit about it in this post.
+
+
+all_text = open("nameslist.txt","r").read()
+all_text_list = list(all_text.split())
+text_set = list(set(all_text.split()))
+
+name_a = text_set[0]
+name_b = text_set[1]
+name_c = text_set[2]
+
+count_a = 0
+count_b = 0
+count_c = 0
+
+while all_text_list != []:
+    for n in all_text_list:
+        if n == name_a:
+            all_text_list.remove(n)
+            count_a += 1
+        elif n == name_b:
+            all_text_list.remove(n)
+            count_b += 1
+        elif n == name_c:
+            all_text_list.remove(n)
+            count_c += 1
+        else:
+            break
+
+        
+print (name_a,":",count_a," ",name_b,":",count_b," ",name_c,":",count_c)
+
+
+
