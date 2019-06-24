@@ -665,3 +665,81 @@ overlaplist = [num for num in prime_list if num in happy_list]
 print(overlaplist)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+Exercise 28 (and Solution)
+Implement a function that takes as input three variables, and returns the largest of the three. Do this without using the Python max() function!
+
+The goal of this exercise is to think about some internals that Python normally takes care of for us. All you need is some variables and if statements!
+
+
+
+def find_max(num_one, num_two, num_three):
+    high_num = ""
+    if num_one > num_two and num_one > num_three:
+        high_num = num_one
+    elif num_two > num_one and num_two > num_three:
+        high_num = num_two
+    elif num_three > num_one and num_three > num_two:
+        high_num = num_three
+    return high_num
+
+
+if __name__=="__main__":
+    num_one = int(input("Enter the first number: "))
+    num_two = int(input("Enter the second number: "))
+    num_three = int(input("Enter the third number: "))
+    high_num = find_max(num_one, num_two, num_three)
+    print ("The highest number is:", high_num)
+
+
+
+
+
+
+
+
+
+Exercise 30 (and Solution)
+This exercise is Part 1 of 3 of the Hangman exercise series. The other exercises are: Part 2 and Part 3.
+
+In this exercise, the task is to write a function that picks a random word from a list of words from the SOWPODS dictionary. Download this file and save it in the same directory as your Python code. This file is Peter Norvig’s compilation of the dictionary of words used in professional Scrabble tournaments. Each line in the file contains a single word.
+
+Hint: use the Python random library for picking a random word.
+
+
+
+
+import random
+
+def get_random_word():
+    all_text = open("sowpods.txt","r").read()
+    text_list = list(all_text.split())
+    while True:
+        user_command = (int(input("Enter 1 for a random word or 2 to quit. ")))
+        if user_command == 1:
+            print (random.choice(text_list))
+        elif user_command == 2:
+            return False
+
+
+if __name__ == "__main__":
+    get_random_word()
+    
+    
+
+
+
+
+
+
