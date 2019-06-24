@@ -643,3 +643,25 @@ for num in prime_list:
 print (new_list)
 
 
+
+# using functions and list comprehension
+
+
+
+def fileoverlap(filename):
+    new_list = []
+    with open(filename) as f:
+        line = f.readline()
+        while line:
+            new_list.append(int(line))
+            line = f.readline()
+    return new_list
+
+prime_list = fileoverlap('primenumbers.txt')
+happy_list = fileoverlap('happynumbers.txt')
+
+overlaplist = [num for num in prime_list if num in happy_list]
+
+print(overlaplist)
+
+
