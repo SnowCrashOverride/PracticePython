@@ -613,3 +613,33 @@ print (name_a,":",count_a," ",name_b,":",count_b," ",name_c,":",count_c)
 
 
 
+
+
+
+
+
+
+
+
+
+Exercise 23 (and Solution)
+Given two .txt files that have lists of numbers in them, find the numbers that are overlapping. One .txt file has a list of all prime numbers under 1000, and the other .txt file has a list of happy numbers up to 1000.
+
+(If you forgot, prime numbers are numbers that can’t be divided by any other number. And yes, happy numbers are a real thing in mathematics - you can look it up on Wikipedia. The explanation is easier with an example, which I will describe below.)
+
+
+
+
+prime_nums = open("primenumbers.txt","r").read()
+happy_nums = open("happynumbers.txt","r").read()
+prime_list = list(prime_nums.split())
+happy_list = list(happy_nums.split())
+new_list = []
+
+for num in prime_list:
+    if num in happy_list:
+        new_list.append(num)
+
+print (new_list)
+
+
