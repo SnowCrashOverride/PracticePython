@@ -826,9 +826,11 @@ def play_hangman():
     guessed_list = []
     letter = input("Guess a letter: ")
     letter = letter.upper()
+    count = 0
 
     while True:
         if letter in guessed_list:
+            count -= 1
             letter = ''
             print("You fool! That letter has already been guessed!")
         if letter in random_word:
@@ -837,6 +839,8 @@ def play_hangman():
             random_word[index] = '_'
         else:
             new_display_word = (''.join(e if (i+1)%1 else e+" " for (i,e) in enumerate(list(display_word))))
+            count += 1
+            print ("You have made", count, "guesses.")
             print (new_display_word)
             if letter is not '':
                 guessed_list.append(letter.upper())
@@ -849,7 +853,13 @@ def play_hangman():
             print (new_display_word)
             print ("Against all odds you have conquered the known universe!!!")
             break
+                
+        
+
+
+if __name__ == "__main__":
     
+    play_hangman()
 
 
 
