@@ -735,7 +735,120 @@ def get_random_word():
 
 if __name__ == "__main__":
     get_random_word()
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exercise 31 (and Solution)
+This exercise is Part 2 of 3 of the Hangman exercise series. The other exercises are: Part 1 and Part 3.
+
+Let’s continue building Hangman. In the game of Hangman, a clue word is given by the program that the player has to guess, letter by letter. The player guesses one letter at a time until the entire word has been guessed. (In the actual game, the player can only guess 6 letters incorrectly before losing).
+
+Let’s say the word the player has to guess is “EVAPORATE”. For this exercise, write the logic that asks a player to guess a letter and displays letters in the clue word that were guessed correctly. For now, let the player guess an infinite number of times until they get the entire word. As a bonus, keep track of the letters the player guessed and display a different message if the player tries to guess that letter again. Remember to stop the game when all the letters have been guessed correctly! Don’t worry about choosing a word randomly or keeping track of the number of guesses the player has remaining - we will deal with those in a future exercise.
+
+
     
+
+
+
+
+import random
+
+def play_hangman():
+    all_text = open("sowpods.txt","r").read()
+    text_list = list(all_text.split())
+    #random_word = random.choice(text_list)
+    trash_word= "EVAPORATE"
+    letter_count = len(trash_word)
+    trash_word = list(trash_word)
+    display_word = list("_" * letter_count)
+    guessed_list = []
+    letter = input("Guess a letter: ")
+    letter = letter.upper()
+
+    while True:
+        if letter in guessed_list:
+            letter = ''
+            print("You fool! That letter has already been guessed!")
+        if letter in trash_word:
+            index = trash_word.index(letter)
+            display_word[index] = letter
+            trash_word[index] = '_'
+        else:
+            new_display_word = (''.join(e if (i+1)%1 else e+" " for (i,e) in enumerate(list(display_word))))
+            print (new_display_word)
+            if letter is not '':
+                guessed_list.append(letter.upper())
+            letter = input("Guess a letter: ")
+            letter = letter.upper()
+
+
+        if '_' not in display_word:
+            new_display_word = (''.join(e if (i+1)%1 else e+" " for (i,e) in enumerate(list(display_word))))
+            print (new_display_word)
+            print ("Against all odds you have conquered the known universe!!!")
+            break
+                
+        
+
+
+if __name__ == "__main__":
+    
+    play_hangman()
+
+
+
+
+#now with random word functionality:
+
+
+
+
+import random
+
+def play_hangman():
+    all_text = open("sowpods.txt","r").read()
+    text_list = list(all_text.split())
+    random_word = random.choice(text_list)
+    trash_word= "EVAPORATE"
+    letter_count = len(random_word)
+    random_word = list(random_word)
+    display_word = list("_" * letter_count)
+    guessed_list = []
+    letter = input("Guess a letter: ")
+    letter = letter.upper()
+
+    while True:
+        if letter in guessed_list:
+            letter = ''
+            print("You fool! That letter has already been guessed!")
+        if letter in random_word:
+            index = random_word.index(letter)
+            display_word[index] = letter
+            random_word[index] = '_'
+        else:
+            new_display_word = (''.join(e if (i+1)%1 else e+" " for (i,e) in enumerate(list(display_word))))
+            print (new_display_word)
+            if letter is not '':
+                guessed_list.append(letter.upper())
+            letter = input("Guess a letter: ")
+            letter = letter.upper()
+
+
+        if '_' not in display_word:
+            new_display_word = (''.join(e if (i+1)%1 else e+" " for (i,e) in enumerate(list(display_word))))
+            print (new_display_word)
+            print ("Against all odds you have conquered the known universe!!!")
+            break
     
 
 
