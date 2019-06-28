@@ -866,3 +866,57 @@ if __name__ == "__main__":
 
 
 
+
+
+
+
+
+Exercise 33 (and Solution)
+This exercise is Part 1 of 4 of the birthday data exercise series. The other exercises are: Part 2, Part 3, and Part 4.
+
+For this exercise, we will keep track of when our friend’s birthdays are, and be able to find that information based on their name. Create a dictionary (in your file) of names and birthdays. When you run your program it should ask the user to enter a name, and return the birthday of that person back to them. The interaction should look something like this:
+
+>>> Welcome to the birthday dictionary. We know the birthdays of:
+Albert Einstein
+Benjamin Franklin
+Ada Lovelace
+>>> Who's birthday do you want to look up?
+Benjamin Franklin
+>>> Benjamin Franklin's birthday is 01/17/1706.
+
+
+
+
+def get_birthday():
+
+    birthday_dictionary = {
+        "Philip Selway": "5/23/1967",
+        "Johnny Greenwood": "5/11/1971",
+        "Colin Greenwood": "6/26/1969",
+        "Ed O'Brien": "4/15/1968",
+        "Thom Yorke": "10/7/1968"
+        }
+
+    band_member = input("Who's birthday do you want to look up? ")
+
+    for name, birthday in birthday_dictionary.items():
+        if name == band_member:
+            print (name,"'s birthday is:", birthday)
+
+if __name__ == "__main__":
+    print ("\
+            Welcome to the Radiohead birthday dictionary.\n\
+            \n\
+            We know the birthdays of:\n\
+            \n\
+            Philip Selway\n\
+            Johnny Greenwood\n\
+            Colin Greenwood\n\
+            Ed O'Brien\n\
+            Thom Yorke\n\
+            ")
+    
+    get_birthday()
+
+
+
